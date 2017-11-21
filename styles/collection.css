@@ -28,8 +28,6 @@ body.collection {
 }
 
 .collection-album-container .caption p a {
-  font-size: 1rem;
-  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -37,6 +35,6 @@ body.collection {
   color: white;
 }
 
-.collection-album-container {
+.collection-album-container img {
   width: 80%;
 }
