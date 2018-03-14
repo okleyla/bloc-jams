@@ -28,6 +28,21 @@ var albumMarconi = {
   ]
 };
 
+var albumBlige = {
+  title: 'The Breakthrough',
+  artist: 'Mary J. Blige',
+  label: 'Geffen Records',
+  year: '2005',
+  albumArtUrl: 'assets/images/album_covers/21.png',
+  songs: [
+      { title: 'Be Without You', duration: '4:06' },
+      { title: 'Baggage', duration: '3:36' },
+      { title: "Can't Get Enough", duration: '3:41' },
+      { title: 'About You', duration: '4:04' },
+      { title: 'Enough Cryin', duration: '4:21' },
+  ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
           '<tr class="album-view-song-item">'
@@ -38,16 +53,16 @@ var createSongRow = function(songNumber, songName, songLength) {
         ;
 
     return template;
-}
+};
+
+    //#1, moved here to global scope
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
 var setCurrentAlbum = function(album) {
-    //#1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
-
     //#2
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
@@ -65,4 +80,16 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumBlige];
+
+    var i = 0;
+
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[i]);
+        i++;
+        if (i == albums.length) {
+            i = 0;
+        };
+    });
 };
