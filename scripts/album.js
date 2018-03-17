@@ -87,10 +87,17 @@ var playButtonTemplate = '<a class ="album-song-button"><span class="ion-play"><
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
-<<<<<<< HEAD
+    var albums = [albumPicasso, albumMarconi, albumBlige];
+    var i = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[i]);
+        i++;
+        if (i == albums.length) {
+            i = 0;
+        };
+    });
+
     songListContainer.addEventListener('mouseover', function(event) {
-        //#1
-        console.log(event.target);
         //only target individual song rows during the event delgation
         if (event.target.parentElement.className === 'album-view-song-item') {
             //change the content from the number to the play button HTML
@@ -105,17 +112,6 @@ window.onload = function() {
           this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
       })
   }
-=======
-    var albums = [albumPicasso, albumMarconi, albumBlige];
 
-    var i = 0;
 
-    albumImage.addEventListener("click", function(event) {
-        setCurrentAlbum(albums[i]);
-        i++;
-        if (i == albums.length) {
-            i = 0;
-        };
-    });
->>>>>>> assignment-25-album
 };
