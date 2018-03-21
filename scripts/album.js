@@ -134,6 +134,19 @@ var currentlyPlayingSong = null;
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
+
+
+    var albums = [albumPicasso, albumMarconi, albumBlige];
+    var i = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[i]);
+        i++;
+        if (i == albums.length) {
+            i = 0;
+        }
+    });
+
+
     songListContainer.addEventListener('mouseover', function(event) {
         //only target individual song rows during the event delgation
         if (event.target.parentElement.className === 'album-view-song-item') {
@@ -163,13 +176,14 @@ window.onload = function() {
 
     var albums = [albumPicasso, albumMarconi, albumBlige];
 
-    var i = 0;
+    var i = 1;
 
     albumImage.addEventListener("click", function(event) {
         setCurrentAlbum(albums[i]);
         i++;
         if (i == albums.length) {
             i = 0;
-        };
+        }
     });
+
 };
