@@ -137,6 +137,8 @@ var currentlyPlayingSong = null;
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
+
+
     var albums = [albumPicasso, albumMarconi, albumBlige];
     var i = 1;
     albumImage.addEventListener("click", function(event) {
@@ -144,8 +146,9 @@ window.onload = function() {
         i++;
         if (i == albums.length) {
             i = 0;
-        };
+        }
     });
+
 
     songListContainer.addEventListener('mouseover', function(event) {
         //only target individual song rows during the event delgation
