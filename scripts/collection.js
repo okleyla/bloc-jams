@@ -1,4 +1,5 @@
-var collectionItemTemplate =
+var buildCollectionItemTemplate = function () {
+    var template =
     '<div class="collection-album-container column fourth">'
   +  '    <img src="assets/images/album_covers/01.png"/>'
   +  '    <div class="collection-album-info caption">'
@@ -13,22 +14,26 @@ var collectionItemTemplate =
   +  '    </div>'
   +  '</div>';
 
-  window.onload = function() {
+    return $(template);
+};
+
+$(window).load(function() {
     //We select the first (and only, as we've designed it) element
     //with an album-covers class name. We assign this specified element
     //to a variable named collectionContainer.
-    var collectionContainer = document.getElementsByClassName('album-covers')[0];
+    var $collectionContainer = $('.album-covers');
 
         //We assign an empty string to collectionContainer's innerHTML
         //property to clear its content. This ensures we're working
         //with a clean slate before we insert content with JavaScript.
-        collectionContainer.innerHTML = '';
+        $collectionContainer.empty();
 
         //We then create a for loop that inserts 12 albums using the += operator,
         //which appends content to strings. Each loop adds the contents of
         //collectionItemTemplate (template) to the innerHTML of collectionContainer,
         //thereby generating the albums that display on the collection page.
         for (var i = 0; i < 12; i++) {
-            collectionContainer.innerHTML += collectionItemTemplate;
+            var $newThumbnail = buildCollectionItemTemplate();
+            $collectionContainer.append($newThumbnail);
         }
-  }
+});
