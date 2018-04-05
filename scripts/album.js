@@ -82,14 +82,18 @@ var findParentByClassName = function(element, targetClass) {
     var currentParent = element.parentElement;
 
     if (!currentParent) {
-        console.log("No parent found");
-    }
-    else if (element) {
         while (currentParent.className !== targetClass && currentParent.className !== null) {
-            console.log("No parent found with that class name");
             currentParent = currentParent.parentElement;
         }
-        return currentParent;
+        if (currentParent.className === targetClass){
+            return currentParent;
+        }
+        else {
+            console.log("No parent found with that class name");
+        }
+    }
+    else {
+        console.log("No parent found");
     }
 };
 
@@ -107,6 +111,8 @@ var getSongItem = function (element) {
         case 'song-item-title':
         case 'song-item-duration':
             return findParentByClassName (element, 'album-view-song-item').querySelector('.song-item-number');
+        case 'song-item-number':
+            return element;
         default:
             return ('song-item-number');
     }
@@ -114,6 +120,7 @@ var getSongItem = function (element) {
 
 var clickHandler = function(targetElement) {
       var songItem = getSongItem(targetElement);
+
       if (currentlyPlayingSong === null) {
           songItem.innerHTML = pauseButtonTemplate;
           currentlyPlayingSong = songItem.getAttribute('data-song-number');
