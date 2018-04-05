@@ -79,22 +79,21 @@ var setCurrentAlbum = function(album) {
 };
 
 var findParentByClassName = function(element, targetClass) {
-    var currentParent = element.parentElement;
-
-    if (!currentParent) {
+    if (element) {
+        var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
             currentParent = currentParent.parentElement;
+
+            if (currentParent !== targetClass) {
+                console.log("No parent found with that class name.");
+            }
         }
-        if (currentParent.className === targetClass){
-            return currentParent;
-        }
-        else {
-            console.log("No parent found with that class name");
-        }
+        return currentParent;
     }
-    else {
+    else if(!currentParent) {
         console.log("No parent found");
     }
+
 };
 
 //.song-item-number element
