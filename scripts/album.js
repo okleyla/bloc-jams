@@ -88,6 +88,16 @@ var trackIndex = function(album, song) {
     return album.songs.indexOf(song);
 };
 
+var songOrder = function() {
+    var nextSong = function(){
+
+    }
+
+    var previousSong = function() {
+
+    }
+};
+
 var nextSong = function (){
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     currentSongIndex++;
